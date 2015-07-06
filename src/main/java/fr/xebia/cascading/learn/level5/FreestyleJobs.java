@@ -131,9 +131,10 @@ public class FreestyleJobs {
 
 		Pipe  tfPipe = new Pipe("tf", Join2);
 
-		//tfPipe = new Each(tfPipe, new Fields("MaxValueInDoc"),new ExpressionFunction(new Fields("/"),"MaxValueInDoc"), Fields.ALL);
+		//tfPipe = new Each(tfPipe, new Fields("MaxValueInDoc"),new ExpressionFunction(new Fields("TF"),"MaxValueInDoc"), Fields.ALL);
 		tfPipe = new Each(tfPipe, new Fields("MaxValueInDoc","counts"),new CustomFunction(new Fields("TF")), Fields.ALL);
-
+		//In this programm if you see, I am not able to use ExpressionFunction on my previous pipe output. It Gives me error MaxValueDoc is not an Rvalue on line number 134.  On this I have just tried sending MaxValueDoc value in new field "TF".
+		//So I have used custom function.
 		Pipe idfPipe = new Each(tfPipe, new Fields("countDocumentsEachWords","TF"), new CustomFunction1(new Fields("tfidf")), Fields.ALL );
 
 

@@ -1,9 +1,19 @@
 package fr.xebia.cascading.learn.level6;
 
+import cascading.flow.FlowDef;
+import cascading.flow.local.LocalFlowConnector;
 import cascading.operation.Assertion;
 import cascading.operation.Debug;
+import cascading.operation.DebugLevel;
+import cascading.operation.expression.ExpressionFilter;
+import cascading.pipe.Each;
+import cascading.pipe.Pipe;
 import cascading.pipe.SubAssembly;
 import cascading.pipe.assembly.Discard;
+import cascading.scheme.local.TextDelimited;
+import cascading.tap.Tap;
+import cascading.tap.local.FileTap;
+import cascading.tuple.Fields;
 
 /**
  * That's the end. Hope you enjoyed it. But before leaving, 
@@ -18,6 +28,26 @@ public class CleanCode {
 	 */
 	public void experimentWithTheDebugFunction() {
 		throw new UnsupportedOperationException("Go back and try it on your own.");
+
+		String sourcePath = "src/test/resources/fifth-france-parties.txt";
+		String targetPath = "target/level2/filter-with-expression.txt";
+
+		Tap<?,?,?> source = new FileTap(new TextDelimited(true,"\t"),sourcePath );
+		Tap<?,?,?> sink = new FileTap(new TextDelimited(true,"\t"), targetPath);
+
+		Pipe pipe = new Pipe("plain Copy");
+		pipe = new Each(pipe, new Fields("year"), new ExpressionFilter("year.equals(\"1958\")", String.class), Fields.ALL);
+		pipe = new Each( pipe, DebugLevel.VERBOSE, new Debug() );
+		FlowDef flowdef = new FlowDef.flowDef()
+				.addSource(pipe,source)
+				.addTail(pipe)
+				.addSink(pipe,sink);
+		new LocalFlowConnector().connect(flowdef).complete();
+
+
+
+
+
 	}
 	
 	/**
