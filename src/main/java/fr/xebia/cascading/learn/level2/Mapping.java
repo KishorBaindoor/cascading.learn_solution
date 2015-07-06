@@ -33,7 +33,7 @@ public class Mapping {
 	{
 	Pipe pipe = new Pipe("Filter");
 		ExpressionFilter filter = new ExpressionFilter("!line.contains(\"Hadoop\") && !line.contains(\"hadoop\")", String.class);
-
+//Above !line.toLowerCase().contains(\"hadoop\") can be used. Above one shows how to use multiple conditions for filter.
 
 		pipe = new Each(pipe,new Fields("line"),filter);
 
