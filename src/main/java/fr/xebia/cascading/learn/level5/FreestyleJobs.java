@@ -35,6 +35,8 @@ public class FreestyleJobs {
 	 * source field(s) : "line"
 	 * sink field(s) : "word","count"
 	 */
+
+	//Solution below is not as per expectation, but can be referred to get the logic.
 	public static FlowDef countWordOccurences(Tap<?, ?, ?> source, Tap<?, ?, ?> sink)
 	{
 		Pipe pipe = new Pipe("wordCount");
@@ -96,6 +98,9 @@ public class FreestyleJobs {
 	 * PS : Do no think about efficiency, at least, not for a first try.
 	 * PPS : You can remove results where tfidf < 0.1
 	 */
+
+
+	//Solution blelow is not correct, but can be referred to get the logic.
 	public static FlowDef computeTfIdf(Tap<?, ?, ?> source, Tap<?, ?, ?> sink)
 	{
 		Pipe pipe = new Pipe("words");

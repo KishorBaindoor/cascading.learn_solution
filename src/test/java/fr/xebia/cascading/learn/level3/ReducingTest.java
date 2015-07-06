@@ -23,7 +23,7 @@ public class ReducingTest {
 	public void learnToAggregate() throws Exception {
 		// input of the job
 		String sourcePath = "src/test/resources/level2/custom-transform/expectation.txt";
-		Tap<?, ?, ?> source = new FileTap(new TextDelimited(new Fields("words"),true, "#"), sourcePath);
+		Tap<?, ?, ?> source = new FileTap(new TextDelimited(new Fields("word"),true, "#"), sourcePath);
 		
 		// actual output of the job
 		String sinkPath = "target/level3/aggregate.txt";

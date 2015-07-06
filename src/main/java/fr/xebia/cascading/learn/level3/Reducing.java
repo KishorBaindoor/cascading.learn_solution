@@ -35,9 +35,9 @@ public class Reducing {
 
 
 		Pipe pipe = new Pipe("wordsFile");
-		pipe = new GroupBy(pipe, new Fields("words"));
+		pipe = new GroupBy(pipe, new Fields("word"));
 		//pipe = new GroupBy(pipe, new Fields("word"),Fields.ALL);
-		pipe = new Every (pipe, new Fields("words"), new Count(new Fields("wordcount")),new Fields("words","wordcount"));
+		pipe = new Every (pipe, new Fields("word"), new Count(new Fields("count")),new Fields("word","count"));
 		return FlowDef.flowDef()//
 				.addSource(pipe, source) //
 				.addTail(pipe)//
