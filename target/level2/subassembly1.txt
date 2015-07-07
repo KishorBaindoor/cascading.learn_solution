@@ -1,0 +1,10 @@
+year	parties	year1	presidents
+1965	Gaullist	1965	Charles de Gaulle
+1969	Gaullist	1969	Georges Pompidou
+1974	Republican	1974	Valery Giscard d'Estaing
+1981	Socialist	1981	Francois Mitterrand
+1988	Socialist	1988	Francois Mitterrand
+1995	Gaullist	1995	Jacques Chirac
+2002	Gaullist	2002	Jacques Chirac
+2007	Gaullist	2007	Nicolas Sarkozy
+2012	Socialist	2012	Francois Hollande

@@ -14,6 +14,18 @@ import cascading.pipe.Pipe;
 import cascading.tap.Tap;
 import cascading.tuple.Fields;
 
+import cascading.operation.Assertion;
+import cascading.operation.Debug;
+import cascading.operation.DebugLevel;
+import cascading.operation.expression.ExpressionFilter;
+import cascading.pipe.Each;
+
+import cascading.pipe.SubAssembly;
+import cascading.pipe.assembly.Discard;
+
+import cascading.scheme.local.TextLine;
+
+
 /**
  * Now that we know how to maintain a clean schema, it is time to actually manipulate each input individually.
  * {@link Each} will allow you to execute a function for all inputs, a bit like a for loop.
@@ -33,9 +45,10 @@ public class Mapping {
 	{
 	Pipe pipe = new Pipe("Filter");
 		ExpressionFilter filter = new ExpressionFilter("!line.contains(\"Hadoop\") && !line.contains(\"hadoop\")", String.class);
-//Above !line.toLowerCase().contains(\"hadoop\") can be used. Above one shows how to use multiple conditions for filter.
+//Above !line.toLowerCase().contains(\"hadoop\") can be used. Ablove one shows how to use multiple conditions for filter.
 
 		pipe = new Each(pipe,new Fields("line"),filter);
+
 
 		return FlowDef.flowDef()
 				.addSource(pipe,source)

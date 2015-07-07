@@ -23,6 +23,8 @@ public class MappingTest {
 	@Test
 	public void learnToFilterWithExpression() throws Exception {
 		// input of the job
+		//C:\Users\kishorb\gitProjects\cascading.learn_solution\src\test\resources
+		//
 		String sourcePath = "src/test/resources/hadoop-wiki-sample.txt";
 		Tap<?, ?, ?> source = new FileTap(new TextLine(new Fields("line")), sourcePath);
 		
